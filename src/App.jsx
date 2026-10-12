@@ -89,11 +89,11 @@ function scoreClass(score) {
 }
 
 function scoreFill(score) {
-  if (score >= 80) return "#2563eb";
-  if (score >= 65) return "#3b82f6";
-  if (score >= 50) return "#60a5fa";
-  if (score >= 35) return "#93c5fd";
-  return "#dbeafe";
+  if (score >= 80) return "#ce1141";
+  if (score >= 65) return "#d94b68";
+  if (score >= 50) return "#e8899b";
+  if (score >= 35) return "#f1bcc6";
+  return "#f8e5ea";
 }
 
 export default function App() {
@@ -155,8 +155,8 @@ export default function App() {
       weight: selected?.properties?.AREA_NAME === feature.properties.AREA_NAME ? 3 : 1,
       color:
         selected?.properties?.AREA_NAME === feature.properties.AREA_NAME
-          ? "#0f172a"
-          : "#ffffff",
+          ? "#111111"
+          : "rgba(255,255,255,0.8)",
     };
   }
 
@@ -164,7 +164,7 @@ export default function App() {
     layer.on({
       click: () => setSelected(feature),
       mouseover: (e) => {
-        e.target.setStyle({ weight: 2, color: "#0f172a" });
+        e.target.setStyle({ weight: 2.5, color: "#111111" });
       },
       mouseout: (e) => {
         e.target.setStyle(featureStyle(feature));
@@ -191,13 +191,16 @@ export default function App() {
         <section className="hero">
           <div className="hero-copy">
             <div className="eyebrow">
-              <MapPinned size={16} />
-              SPORTS × TRANSIT × TORONTO
+              <MapPinned size={15} />
+              TORONTO / SPORTS ACCESS
             </div>
-            
-            <p><h1>Find the best Toronto neighbourhood for game day.</h1>
-              Explore which neighbourhoods offer the strongest combination of
-              venue proximity and rapid-transit access.
+            <h1>
+              Find your
+              <span> game-day neighbourhood.</span>
+            </h1>
+            <p>
+              Explore Toronto neighbourhoods based on venue proximity and
+              rapid-transit access.
             </p>
           </div>
 
@@ -405,7 +408,7 @@ export default function App() {
           <div className="method-cards">
             <article>
               <div className="method-icon"><MapPinned size={18} /></div>
-              <h3>65% venue proximity</h3>
+              <h3>55% venue proximity</h3>
               <p>
                 Distance from each neighbourhood's map centroid to the selected
                 sports venue.
@@ -413,7 +416,7 @@ export default function App() {
             </article>
             <article>
               <div className="method-icon"><TrainFront size={18} /></div>
-              <h3>35% transit proximity</h3>
+              <h3>45% transit proximity</h3>
               <p>
                 Distance from the neighbourhood centroid to the nearest major
                 rapid-transit hub in the prototype dataset.
